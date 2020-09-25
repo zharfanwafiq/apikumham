@@ -19,3 +19,17 @@ exports.tampilsemuadatapenggguna = (req, res) => {
         }
     });
 };
+
+// menampilkan data berdasarkan id
+exports.tampilberdasarkanid = (req, res) => {
+    let id = req.params.id;
+    connection.query("SELECT * FROM pengguna WHERE id_pengguna=?", [id],
+        (error, rows, fileds) => {
+            if (error) {
+                connection.log(error);
+            } else {
+                response.ok(rows, res);
+            }
+        });
+
+}
