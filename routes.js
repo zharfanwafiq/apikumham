@@ -14,4 +14,7 @@ module.exports = app => {
 
     app.route('/tambah')
         .post(jsonku.tambahpengguna);
+
+    app.route('/ubah')
+        .put(jsonku.ubahpengguna);
 }

@@ -51,3 +51,22 @@ exports.tambahpengguna = (req, res) => {
             }
         });
 };
+
+//ubah data bersasarkan id
+
+exports.ubahpengguna = (req, res) => {
+    var id = req.body.id_pengguna;
+    var nombor = req.body.nombor;
+    var nama = req.body.nama;
+    var jabatan = req.body.jabatan;
+
+    connection.query('UPDATE pengguna SET nombor=?, nama=?, jabatan=? WHERE id_pengguna=?', [nombor, nama, jabatan, id],
+        (error, rows, fileds) => {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("BERHASIL MENGUBAH DATA!!!", res);
+            }
+
+        });
+};
