@@ -2,6 +2,7 @@
 
 var response = require('./res');
 var connection = require('./koneksi');
+const e = require('express');
 
 exports.index = (req, res) => {
     response.ok('REST API BERJALAN!!!', res)
@@ -33,3 +34,20 @@ exports.tampilberdasarkanid = (req, res) => {
         });
 
 }
+
+//mesnmbahkan ata mahasaiswa
+exports.tambahpengguna = (req, res) => {
+    var id_pengguna = req.body.id_pengguna;
+    var nombor = req.body.nombor;
+    var nama = req.body.nama;
+    var jabatan = req.body.jabatan;
+
+    connection.query('INSERT INTO pengguna (id_pengguna,nombor,nama,jabatan) VALUES(?,?,?,?)', [id_pengguna, nombor, nama, jabatan],
+        (error, rows, fileds) => {
+            if (error) {
+                console.log(error)
+            } else {
+                response.ok('Berhasil menambahkan DATA!!', res)
+            }
+        });
+};
