@@ -70,3 +70,18 @@ exports.ubahpengguna = (req, res) => {
 
         });
 };
+
+//menghapus data berdasarkan id
+exports.hapuspengguna = (req, res) => {
+    var id = req.body.id_pengguna;
+
+    connection.query('DELETE FROM pengguna WHERE id_pengguna=?', [id],
+        (error, rows, fileds) => {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("BERHASIL MENGHAPUS DATA!!!", res)
+            }
+
+        });
+};

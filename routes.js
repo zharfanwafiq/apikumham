@@ -17,4 +17,7 @@ module.exports = app => {
 
     app.route('/ubah')
         .put(jsonku.ubahpengguna);
+
+    app.route('/hapus')
+        .delete(jsonku.hapuspengguna);
 }
